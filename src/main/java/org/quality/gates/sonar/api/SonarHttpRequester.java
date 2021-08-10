@@ -37,7 +37,12 @@ public abstract class SonarHttpRequester {
 
     private static Logger LOGGER = LoggerFactory.getLogger(SonarHttpRequester.class);
 
-    private static final String SONAR_API_COMPONENT_SHOW = "/api/components/show?key=%s";
+     private static final String SONAR_API_COMPONENT_SHOW = "/api/components/show?component=%s";
+
+ protected String getSonarApiComponentShow() {
+        return SONAR_API_COMPONENT_SHOW;
+    }
+
 
     /**
      * Cached client context for lazy login.
@@ -175,7 +180,10 @@ public abstract class SonarHttpRequester {
 
         checkLogged(globalConfigDataForSonarInstance);
 
-        String sonarApiQualityGates = globalConfigDataForSonarInstance.getSonarUrl() + String.format(SONAR_API_COMPONENT_SHOW, configData.getProjectKey());
+    //    String sonarApiQualityGates = globalConfigDataForSonarInstance.getSonarUrl() + String.format(SONAR_API_COMPONENT_SHOW, configData.getProjectKey());
+
+        String sonarApiQualityGates = globalConfigDataForSonarInstance.getSonarUrl() + String.format(getSonarApiComponentShow(), configData.getProjectKey());
+
 
         HttpGet request = new HttpGet(sonarApiQualityGates);
 
