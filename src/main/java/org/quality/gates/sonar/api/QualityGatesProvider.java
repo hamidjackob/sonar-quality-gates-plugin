@@ -66,7 +66,7 @@ public class QualityGatesProvider {
             QualityGateTaskCE taskCE = gson.fromJson(statusResultJson, QualityGateTaskCE.class);
 
             if (ArrayUtils.isNotEmpty(taskCE.getQueue())) {
-
+                
                 listener.getLogger().println("Has build " + taskCE.getQueue()[0].getStatus() + " with id: " + taskCE.getQueue()[0].getId() + " - waiting " + timeToWait + " to execute next check. DEBUG:" + (System.currentTimeMillis()-startTime));
 
                 Thread.sleep(timeToWait);

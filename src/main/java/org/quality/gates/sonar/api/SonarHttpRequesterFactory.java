@@ -34,13 +34,15 @@ class SonarHttpRequesterFactory {
 
             if (majorSonarVersion(sonarVersion) <= 5) {
                 return new SonarHttpRequester5x();
-            } else if (majorSonarVersion(sonarVersion) >= 6 && minorSonarVersion(sonarVersion) == 0) {
+            } 
+            else if (majorSonarVersion(sonarVersion) >= 8 ) {
+                return new SonarHttpRequester8x();
+            }
+            else if (majorSonarVersion(sonarVersion) >= 6 && minorSonarVersion(sonarVersion) == 0) {
                 return new SonarHttpRequester60();
             } else if (majorSonarVersion(sonarVersion) >= 6 && minorSonarVersion(sonarVersion) >= 1) {
                 return new SonarHttpRequester61();
-            } else if (majorSonarVersion(sonarVersion) >= 8 ) {
-                return new SonarHttpRequester8x();
-            }else {
+            } else {
                 throw new UnsuportedVersionException("Plugin doesn't suport this version of sonar api! Please contact the developer.");
             }
         } catch (IOException e) {
