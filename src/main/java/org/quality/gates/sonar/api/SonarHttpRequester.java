@@ -39,6 +39,10 @@ public abstract class SonarHttpRequester {
 
     private static final String SONAR_API_COMPONENT_SHOW = "/api/components/show?component=%s";
 
+    protected String getSonarApiComponentShow() {
+        return SONAR_API_COMPONENT_SHOW;
+    }
+
     /**
      * Cached client context for lazy login.
      * @see #loginApi(GlobalConfigDataForSonarInstance)
