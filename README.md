@@ -3,7 +3,7 @@ Jenkins plugin that fails the build if the predefined sonar quality gates are no
 
 #### Sonarqube supported versions
 #### Maven install command
-mvn install -f "/workspace/sonar-quality-gates-plugin/pom.xml" -Djenkins.version=2.164  -Dmaven.test.skip=true -Dmaven.javadoc.skip=true
+mvn clean install -f "/workspace/sonar-quality-gates-plugin/pom.xml" -Djenkins.version=2.164  -Dmaven.test.skip=true -Dmaven.javadoc.skip=true
 
 * Sonar 5.6
 * Sonar 6.x+
